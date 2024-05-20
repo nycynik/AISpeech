@@ -11,6 +11,31 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route("/listen")
+def listen():
+     return render_template("stt.html")
+
+@app.route("/transcribe", methods=["POST"])
+def transcribe_audio():
+    try:
+        if not "file" in request.files:
+             return "missing audio file", 400
+         
+        file = request.files["file"]
+        handle = BytesIO(file.read())
+        handle.name = file.filename
+        transcript = client.audio.transcriptions.create(
+            model="whisper-1", 
+            file=handle, 
+            response_format="text",
+        )
+    
+        return transcript
+    
+    except Exception as e:
+            logging.error(f"An error occurred during transcribe processing: {e}")
+            return "An error occurred while processing the request", 500
+
 @app.route("/tts", methods=["POST"])
 def tts():
     try:
