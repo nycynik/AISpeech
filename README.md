@@ -1,6 +1,8 @@
 # AISpeech
 Generating and listening with AI
 
+This is all built with Python and the [Official Python Library](https://github.com/openai/openai-python).
+
 # snippets
 
 ## Text to speech
@@ -23,4 +25,8 @@ Setup an python env, and start it.
 Then install requirements
 
     pip install -r requriements.txt
-    
+
+## Update the requirements?
+
+    pipreqs
+
