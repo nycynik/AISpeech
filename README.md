@@ -12,6 +12,14 @@ See TTS folder
 
 # Development Setup
 
+## running locally
+
+To run, using python3
+
+    cd web
+    python app.py
+
+
 ## OpenAI API Key
 
 Set your openAI API Key using an env variable:
